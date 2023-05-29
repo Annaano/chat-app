@@ -1,10 +1,13 @@
+import 'package:chat_app/screens/signup/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/screens/login/login_screen.dart';
+import 'package:chat_app/core/const/color_consts.dart';
+import 'package:chat_app/core/const/text_consts.dart';
 
 // import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = '/auth';
+  static const routeName = '/home';
   const HomeScreen({super.key});
 
   @override
@@ -15,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorConsts.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -35,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   left: 30,
                   right: 30,
                 ),
-                child: Text(
+                child: const Text(
                   textAlign: TextAlign.center,
-                  "Find your all frineds in one place by signing the apps quick & easily.",
+                  TextConsts.introductionTitle,
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: ColorConsts.mainColor,
                       fontFamily: 'Poppins',
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
@@ -51,15 +54,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(Login.routeName);
+                    // Navigator.of(context).pushNamed(Login.routeName);
                   },
                   style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
-                      backgroundColor: Theme.of(context).colorScheme.primary),
+                      backgroundColor: ColorConsts.mainColor),
                   child: const Text(
-                    'Have an account? Login',
+                    TextConsts.login,
                     style: TextStyle(
-                        color: Colors.white,
+                        color: ColorConsts.white,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold),
                   ),
@@ -70,15 +73,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 250,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
-                    backgroundColor: const Color(0xFFe6f5ff),
+                    backgroundColor: ColorConsts.secondMainColor,
                   ),
-                  child: Text(
-                    "Join us, it's free",
+                  child: const Text(
+                    TextConsts.signUp,
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: ColorConsts.mainColor,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold),
                   ),
