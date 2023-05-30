@@ -2,8 +2,8 @@ import 'package:chat_app/core/const/color_consts.dart';
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatefulWidget {
-  final String title;
-  final String placeholder;
+  final String hintText;
+  final String labelText;
   final String errorText;
   final bool obscureText;
   final bool isError;
@@ -13,8 +13,8 @@ class AppTextField extends StatefulWidget {
   final TextInputType? keyboardType;
 
   const AppTextField({
-    required this.title,
-    required this.placeholder,
+    required this.hintText,
+    required this.labelText,
     this.obscureText = false,
     this.isError = false,
     required this.controller,
@@ -81,7 +81,7 @@ class AppTextFieldState extends State<AppTextField> {
 
   Widget _getHeader() {
     return Text(
-      widget.title,
+      widget.hintText,
       style: TextStyle(
         color: _getUserNameColor(),
         fontSize: 14,
@@ -143,7 +143,7 @@ class AppTextFieldState extends State<AppTextField> {
             color: ColorConsts.mainColor,
           ),
         ),
-        hintText: widget.placeholder,
+        hintText: widget.labelText,
         hintStyle: const TextStyle(
           color: ColorConsts.grey,
           fontSize: 16,

@@ -1,5 +1,5 @@
-// import 'package:chat_app/screens/login/login_screen.dart';
-import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/login/login_screen.dart';
+import 'package:chat_app/screens/main_screen.dart';
 import 'package:chat_app/screens/signup/sign_up_cubit.dart';
 import 'package:chat_app/screens/signup/widget/sign_up_content.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +23,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: BlocConsumer<SignUpCubit, SignUpState>(
         listener: (context, state) {
           if (state is SignUpNextMainScreenState) {
-            Navigator.of(context).pushNamed(HomeScreen.routeName);
+            Navigator.of(context).pushNamed(MainScreen.routeName);
           } else if (state is SignUpNextLoginPageState) {
-            // Navigator.of(context).pushNamed(LoginScreen.routeName);
-            Navigator.of(context).pushNamed(HomeScreen.routeName);
+            Navigator.of(context).pushNamed(LoginScreen.routeName);
           } else if (state is SignUpErrorMessageState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),

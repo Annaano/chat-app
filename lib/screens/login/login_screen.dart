@@ -1,118 +1,43 @@
+import 'package:chat_app/screens/login/login_cubit.dart';
+import 'package:chat_app/screens/login/widget/login_content.dart';
+// import 'package:chat_app/screens/main_screen.dart';
+import 'package:chat_app/screens/signup/sign_up_screen.dart';
+// import 'package:chat_app/screens/reset_password/reset_password_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:chat_app/di/dependency_injections.dart' as di;
 
-class Login extends StatefulWidget {
-  static const routeName = '/logingit ';
-  const Login({super.key});
+class LoginScreen extends StatefulWidget {
+  static const routeName = '/login';
+
+  const LoginScreen({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 30,
-                  left: 20,
-                  right: 20,
-                ),
-                width: 800,
-                child: Image.asset('assets/images/chatting.jpg'),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Find your all frineds in one place by signing the apps quick & easily.",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 30),
-              SizedBox(
-                width: 250,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      backgroundColor: Theme.of(context).colorScheme.primary),
-                  child: const Text(
-                    'Have an account? Login',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                width: 250,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    backgroundColor: const Color(0xFFe6f5ff),
-                  ),
-                  child: Text(
-                    "Join us, it's free",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              )
-
-              // Card(
-              //   margin: const EdgeInsets.all(20),
-              //   child: SingleChildScrollView(
-              //     child: Padding(
-              //       padding: const EdgeInsets.all(16),
-              //       child: Form(
-              //         child: Column(
-              //           mainAxisSize: MainAxisSize.min,
-              //           children: [
-              //             TextFormField(
-              //               decoration:
-              //                   InputDecoration(labelText: 'Email Address'),
-              //               keyboardType: TextInputType.emailAddress,
-              //               autocorrect: false,
-              //               textCapitalization: TextCapitalization.none,
-              //             ),
-              //             TextFormField(
-              //               decoration: InputDecoration(labelText: 'Password'),
-              //               obscureText: true,
-              //             ),
-              //             SizedBox(
-              //               height: 12,
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
-        ),
+    return BlocProvider<LoginCubit>(
+      create: (context) => di.sl(),
+      child: BlocConsumer<LoginCubit, LoginState>(
+        listener: (context, state) {
+          if (state is LoginNextResetPasswordScreenState) {
+            // Navigator.of(context).pushNamed(ResetPasswordScreen.routeName);
+          } else if (state is LoginNextRegistrationScreenState) {
+            Navigator.of(context).pushNamed(SignUpScreen.routeName);
+          } else if (state is LoginNextMainScreenState) {
+            // Navigator.of(context).pushReplacementNamed(MainScreen.routeName);
+          } else if (state is LoginErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
+          }
+        },
+        builder: (context, state) {
+          return const LoginContent();
+        },
       ),
     );
   }
