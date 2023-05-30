@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/main_screen.dart';
 import 'package:chat_app/screens/login/login_screen.dart';
 import 'package:chat_app/screens/signup/sign_up_screen.dart';
 
@@ -24,16 +24,17 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Chat',
-        theme: ThemeData().copyWith(
+        theme: ThemeData(fontFamily: 'Poppins').copyWith(
           useMaterial3: true,
           // colorScheme: ColorScheme.fromSeed(
           //     seedColor: const Color.fromARGB(255, 122, 99, 179)),
         ),
         initialRoute: '/',
         routes: {
-          Login.routeName: (context) => const Login(),
+          MainScreen.routeName: (context) => const MainScreen(),
           SignUpScreen.routeName: (context) => const SignUpScreen(),
+          LoginScreen.routeName: (context) => const LoginScreen(),
         },
-        home: const HomeScreen());
+        home: const MainScreen());
   }
 }

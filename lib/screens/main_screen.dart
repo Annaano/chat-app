@@ -4,17 +4,15 @@ import 'package:chat_app/screens/login/login_screen.dart';
 import 'package:chat_app/core/const/color_consts.dart';
 import 'package:chat_app/core/const/text_consts.dart';
 
-// import 'package:flutter/widgets.dart';
-
-class HomeScreen extends StatefulWidget {
-  static const routeName = '/home';
-  const HomeScreen({super.key});
+class MainScreen extends StatefulWidget {
+  static const routeName = '/MainScreen';
+  const MainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   right: 20,
                 ),
                 width: 800,
-                child: Image.asset('assets/images/chatting.jpg'),
+                child: Image.asset('assets/images/mainphoto.jpg'),
               ),
               Container(
                 margin: const EdgeInsets.only(
@@ -43,18 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   TextConsts.introductionTitle,
                   style: TextStyle(
                       color: ColorConsts.mainColor,
-                      fontFamily: 'Poppins',
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 30),
+
               SizedBox(
                 width: 250,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.of(context).pushNamed(Login.routeName);
+                    Navigator.of(context).pushNamed(LoginScreen.routeName);
                   },
                   style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
@@ -62,9 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Text(
                     TextConsts.login,
                     style: TextStyle(
-                        color: ColorConsts.white,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold),
+                        color: ColorConsts.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -84,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     TextConsts.signUp,
                     style: TextStyle(
                         color: ColorConsts.mainColor,
-                        fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold),
                   ),
                 ),

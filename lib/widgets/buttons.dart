@@ -23,7 +23,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: fullSize! ? double.infinity : width,
-      height: fullSize! ? 55 : height,
+      height: fullSize! ? 60 : height,
       // decoration: BoxDecoration(
       //   gradient: isEnabled
       //       ? const LinearGradient(
@@ -34,8 +34,8 @@ class Button extends StatelessWidget {
       // ),
       child: Material(
         color: ColorConsts.mainColor,
+        borderRadius: BorderRadius.circular(20),
         child: InkWell(
-          borderRadius: BorderRadius.circular(100),
           onTap: onTap,
           child: Center(
             child: Text(

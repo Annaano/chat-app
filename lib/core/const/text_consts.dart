@@ -2,40 +2,46 @@ class TextConsts {
   static const String signUpTitle = "Sign up";
   static const String signInTitle = "Sign In";
   static const String signOutTitle = "Sign Out";
+  static const String continueButton = "Continue";
+
   static const String introductionTitle =
       "Find your all frineds in one place by signing the app quick & easily.";
 
   static const String login = 'Have an account? Login';
   static const String signUp = "Join us, it's free";
+  static String joined = "Joined us before?";
+  static String loginFromSignUp = "Login";
 
   static const String username = 'Username';
-  static const String userNamePlaceholder = 'Enter your name';
+  static const String userNameLabelText = 'Full name';
   static const String usernameErrorText = 'Text is required';
 
   static const String email = 'Email';
-  static const String emailPlaceholder = 'example@mail.com';
+  static const String emailLabelText = 'Email Address';
+  static const String emailLoginLabelText = 'Enter your email';
   static const String emailErrorText = 'Please enter a valid email';
 
   static const String password = 'Password';
-  static const String passwordPlaceholder = 'Must be at least 8 symbols';
+  static const String passwordLabelText = 'Enter your password ';
   static const String passwordErrorText =
       'Password should contain at least 8 characters';
 
   static const String confirmPassword = 'Confirm password';
-  static const String confirmPasswordPlaceholder = 'Repeat password';
+  static const String confirmPasswordLabelText = 'Repeat password';
   static const String confirmPasswordErrorText = 'Passwords do not match';
 
   static const String alreadyHaveAccount = 'Already have an account?';
 
-  static const String passwordPlaceholderLogin = 'Enter your password';
+  static const String passwordLabelTextLogin = 'Enter your password';
   static const String forgotPassword = 'Forgot password?';
   static const String doNotHaveAnAccount = 'Do not have an account?';
+  static const String doNotHaveAnAccountSignUp = 'Create one here';
 
   static const resetPassword = 'Reset your password';
   static const sendActivationBuild = 'Send Activation Link';
   static const resetPasswordLinkWasSent =
       'Reset password link was sent, please check your email.';
-  static const String returnBack = 'Return back';
+  static const String returnBack = 'Return Back';
 
   // static const String homeText = 'Home';
 

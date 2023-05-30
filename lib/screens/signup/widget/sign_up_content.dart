@@ -1,8 +1,9 @@
 import 'package:chat_app/core/const/color_consts.dart';
 import 'package:chat_app/core/const/text_consts.dart';
-import 'package:chat_app/core/const/photo_consts.dart';
+
 import 'package:chat_app/core/services/validation_services.dart';
 import 'package:chat_app/screens/signup/sign_up_cubit.dart';
+import 'package:chat_app/screens/main_screen.dart';
 import 'package:chat_app/widgets/buttons.dart';
 import 'package:chat_app/widgets/loading.dart';
 import 'package:chat_app/widgets/text_field.dart';
@@ -54,15 +55,15 @@ class SignUpContent extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 50),
             _getTitle(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             _getForm(context),
             const SizedBox(height: 40),
             _getSignUpButton(context),
-            const SizedBox(height: 40),
+            const SizedBox(height: 25),
             _getHaveAccountText(context),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
+            _goBack(context),
           ],
         ),
       ),
@@ -75,14 +76,17 @@ class SignUpContent extends StatelessWidget {
 
   Widget _getTitle() {
     return Column(children: [
-      SizedBox(width: 56, height: 56, child: Image.asset(PathConsts.user)),
-      const SizedBox(
-        height: 16,
+      Container(
+        alignment: Alignment.topCenter,
+        child: SizedBox(
+            width: 200,
+            height: 200,
+            child: Image.asset('assets/images/signup.jpg')),
       ),
       const Text(
         TextConsts.signUpTitle,
         style: TextStyle(
-          color: ColorConsts.textBlack,
+          color: ColorConsts.mainColor,
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
@@ -100,8 +104,8 @@ class SignUpContent extends StatelessWidget {
             Form(
               key: _formKey,
               child: AppTextField(
-                title: TextConsts.username,
-                placeholder: TextConsts.userNamePlaceholder,
+                hintText: TextConsts.username,
+                labelText: TextConsts.userNameLabelText,
                 controller: cubit.userNameController,
                 textInputAction: TextInputAction.next,
                 errorText: TextConsts.usernameErrorText,
@@ -116,8 +120,8 @@ class SignUpContent extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             AppTextField(
-              title: TextConsts.email,
-              placeholder: TextConsts.emailPlaceholder,
+              hintText: TextConsts.email,
+              labelText: TextConsts.emailLabelText,
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
               controller: cubit.emailController,
@@ -131,8 +135,8 @@ class SignUpContent extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             AppTextField(
-              title: TextConsts.password,
-              placeholder: TextConsts.passwordPlaceholder,
+              hintText: TextConsts.password,
+              labelText: TextConsts.passwordLabelText,
               obscureText: true,
               isError: state is SignUpShowErrorState
                   ? !ValidationService.isPasswordValid(
@@ -147,8 +151,8 @@ class SignUpContent extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             AppTextField(
-              title: TextConsts.confirmPassword,
-              placeholder: TextConsts.confirmPasswordPlaceholder,
+              hintText: TextConsts.confirmPassword,
+              labelText: TextConsts.confirmPasswordLabelText,
               obscureText: true,
               isError: state is SignUpShowErrorState
                   ? !ValidationService.isConfirmPasswordValid(
@@ -174,7 +178,7 @@ class SignUpContent extends StatelessWidget {
       child: BlocBuilder<SignUpCubit, SignUpState>(
         builder: (context, state) {
           return Button(
-            title: TextConsts.signUpTitle,
+            title: TextConsts.continueButton,
             isEnabled: state is SignUpButtonEnableChangedState
                 ? state.isEnabled
                 : false,
@@ -194,14 +198,14 @@ class SignUpContent extends StatelessWidget {
     final cubit = BlocProvider.of<SignUpCubit>(context);
     return RichText(
       text: TextSpan(
-        text: TextConsts.alreadyHaveAccount,
+        text: TextConsts.joined,
         style: const TextStyle(
           color: ColorConsts.textBlack,
           fontSize: 18,
         ),
         children: [
           TextSpan(
-            text: " ${TextConsts.login}",
+            text: " ${TextConsts.loginFromSignUp}",
             style: const TextStyle(
               color: ColorConsts.mainColor,
               fontSize: 18,
@@ -213,6 +217,21 @@ class SignUpContent extends StatelessWidget {
               },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _goBack(BuildContext context) {
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          text: TextConsts.returnBack,
+          style: TextStyle(color: Colors.grey.shade400, fontSize: 15),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              Navigator.of(context).pushNamed(MainScreen.routeName);
+            },
+        ),
       ),
     );
   }
