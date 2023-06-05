@@ -1,5 +1,5 @@
 // import 'package:chat_app/screens/login/login_screen.dart';
-import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/main_screen.dart';
 import 'package:chat_app/screens/signup/sign_up_cubit.dart';
 import 'package:chat_app/screens/signup/widget/sign_up_content.dart';
 import 'package:flutter/material.dart';
