@@ -45,6 +45,7 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   bloc: ^8.1.2
   cloud_firestore: ^4.8.0
+  shared_preferences: ^2.1.1
 
 dev_dependencies:
   flutter_test:
